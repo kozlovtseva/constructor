@@ -3,9 +3,9 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 // import Header from './HeaderComponent';
 // import Footer from './FooterComponent';
-// import HomePage from './HomeComponent';
-// import Caluclator from './CaluclatorComponent';
-// import About from './AboutComponent';
+import Constructor from './ConstructorComponent';
+import Calculator from './CalculatorComponent';
+import About from './AboutComponent';
 
 
 
@@ -17,10 +17,10 @@ class Main extends React.Component {
         {/* <Header /> */}
         <div>
             <Switch>
-                <Route path='/home' component={() => <HomePage/>} />
-                <Route path='/caluclator' component={() => <Caluclator/>} />
+                <Route path='/constructor' component={() => <Constructor/>} />
+                <Route path='/calculator' component={() => <Calculator/>} />
                 <Route path='/aboutus' component={() => <About/>} />
-                <Redirect to="/home" />
+                <Redirect to="/constructor" />
             </Switch>
         </div>
         {/* <Footer /> */}

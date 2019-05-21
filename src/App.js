@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+// fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
 import Main from './components/MainComponent';
 import './App.css';
 
-// fontawesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 // const store = ConfigureStore();
-library.add(faStroopwafel)
+library.add(fab)
 
 class App extends React.Component {
     render() {

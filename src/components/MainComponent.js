@@ -13,16 +13,16 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-            <Header />
-            <div>
-                <Switch>
-                    <Route path='/constructor' component={() => <Constructor/>} />
-                    <Route path='/calculator' component={() => <Calculator/>} />
-                    <Route path='/aboutus' component={() => <About/>} />
-                    <Redirect to="/constructor" />
-                </Switch>
-            </div>
-            <Footer />
+                <Header />
+                <div>
+                    <Switch>
+                        <Route path='/constructor' component={() => <Constructor/>} />
+                        <Route path='/calculator' component={() => <Calculator/>} />
+                        <Route path='/aboutus' component={() => <About/>} />
+                        <Redirect to="/constructor" />
+                    </Switch>
+                </div>
+                <Footer />
             </div>
         );
     }

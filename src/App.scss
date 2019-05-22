@@ -1,0 +1,38 @@
+$background-yellow: #eff6C9;
+$background-green: #bbd3A2;
+$background-canary: #e4f48b;
+$text-color: #21501d;
+
+body{
+    color: $text-color;
+}
+.header{
+    background-color: $background-yellow;
+}
+.title{
+    font-size: 64px;
+}
+.subtitle{
+    font-size: 48px;
+}
+
+.nav-link{
+    background-color: $background-green;
+    border-left: 1px solid $background-yellow;
+    color: #fff!important;
+    font-size: 24px;
+    text-align: center;
+    width: 300px;
+    height: 60px;
+}
+.nav-link:hover{   
+    background-color: $background-canary;
+    cursor: pointer;
+}
+.navbar{
+    background-color: $background-green;
+    padding: 0;
+}
+.navbar-nav:last-of-type{
+    border-right: 1px solid $background-yellow;
+}

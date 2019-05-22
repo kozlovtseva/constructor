@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
@@ -22,27 +25,33 @@ class Header extends Component {
 
     render() {
         return(
-            <div>
-                <div className="jumbotron row-header">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 col-sm-5 col-md-4 col-lg-2">
-                                <Link to="/constructor">
-                                    {/* <img src='assets/images/logo.png' height="150" width="150"/> */}
-                                    <img src='https://fruitnews.ru/images/AvacadoChrisStock.jpg' height="150" width="150" alt="Ration Constructor"/>
-                                </Link>
-                            </div>
-                            <h1 className="col-12 col-sm-7 col-md-8 col-lg-10 title">
-                                Ration Constructor For Your Healthy Life              
-                            </h1>
-                        </div>
-                    </div>
-                </div>
+            <div className="header">
+                <Container >
+                    <Row>
+                        <Col xs={12} sm={5} md={4} lg={2}>
+                            <Link to="/constructor">
+                                <img src='images/logo.png' alt="Ration Constructor" height="150" width="150"/>
+                            </Link>
+                        </Col>
+                        <Col xs={12} sm={7} md={8} lg={10}>
+                            <Row>
+                                <Col xs={12}>
+                                    <h1 className="title">
+                                        Ration Constructor               
+                                    </h1>
+                                </Col>
+                                <Col className="subtitle" xs={12}>
+                                    For Your Healthy Life
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container>
                 <Navbar collapseOnSelect expand="lg">
-                    <div className="container">
+                    <Container>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="mr-auto">
+                            <Nav>
                                 <Nav.Link href='/constructor'>
                                     Constructor
                                 </Nav.Link>
@@ -54,7 +63,7 @@ class Header extends Component {
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
-                    </div>
+                    </Container>
                 </Navbar>
             </div>
         );

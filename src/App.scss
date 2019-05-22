@@ -6,8 +6,11 @@ $text-color: #21501d;
 body{
     color: $text-color;
 }
-.header{
+.header, .footer{
     background-color: $background-yellow;
+}
+.footer{
+    padding: 20px;
 }
 .title{
     font-size: 64px;
@@ -35,4 +38,11 @@ body{
 }
 .navbar-nav:last-of-type{
     border-right: 1px solid $background-yellow;
+}
+.icon{
+    color: $background-green;
+    margin-right: 5px;
+}
+.icon:hover{
+    color: $text-color;
 }

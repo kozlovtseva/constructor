@@ -1,25 +1,29 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Footer() {
     return(
-    <div className="footer">
-        <div className="container">
-            <div className="row justify-content-around">
-                <div className="col-12 col-sm-6 col-md-4 row">
-                    <div className="col-4">
+        <div className="footer">
+        <Container>
+            <Row className="justify-content-around">
+                <Col xs={12} sm={6} md={4} className="row">
+                    <Col xs={4}>
                         Contact us:
-                    </div>
-                    <div className="col-8">
+                    </Col>
+                    <Col xs={8}>
                         Email: ration@mail.ru
+                        <br/>
                         Tel.: +7(999)777-77-77
-                    </div>
-                </div>
-                <div className="col-12 col-sm-6 col-md-4 row">
-                    <div className="col-5">
+                    </Col>
+                </Col>
+                <Col xs={12} sm={6} md={4} className="row">
+                    <Col xs={5}>
                         Follow us:
-                    </div>
-                    <div className="col-7">
+                    </Col>
+                    <Col xs={7}>
                         <a className="icon" href="http://www.facebook.com/profile.php?id=">
                             <FontAwesomeIcon icon={['fab', 'facebook']} />
                         </a>
@@ -32,16 +36,16 @@ function Footer() {
                         <a className="icon" href="http://google.com/+">
                             <FontAwesomeIcon icon={['fab', 'google']} />
                         </a>
-                    </div>
+                    </Col>
+                </Col>
+            </Row>                   
+            <Row className="justify-content-around">            
+                <div className="col-auto mt-3">
+                    <p>© Copyright 2019</p>
                 </div>
-            </div>        
-        </div>    
-        <div className="row justify-content-center">             
-            <div className="col-auto mt-3">
-                <p>© Copyright 2019</p>
-            </div>
-        </div>   
-    </div>
+            </Row>
+        </Container>
+        </div>
     )
 }
 

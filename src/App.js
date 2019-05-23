@@ -8,19 +8,19 @@ import Main from './components/MainComponent';
 import './App.scss';
 
 
-// const store = ConfigureStore();
-library.add(fab)
+const store = ConfigureStore();
+library.add(fab);
 
 class App extends React.Component {
     render() {
         return (     
-            // <Provider store={store}>
+            <Provider store={store}>
                 <BrowserRouter>
                     <div className="App">
                         <Main />
                     </div>
                 </BrowserRouter>
-            // </Provider>
+            </Provider>
         );
     }
 }

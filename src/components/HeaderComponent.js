@@ -40,7 +40,7 @@ class Header extends Component {
                                         Ration Constructor               
                                     </h1>
                                 </Col>
-                                <Col className="subtitle" xs={12}>
+                                <Col className="mainSubtitle" xs={12}>
                                     For Your Healthy Life
                                 </Col>
                             </Row>

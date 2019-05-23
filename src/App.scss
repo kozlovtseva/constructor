@@ -15,7 +15,7 @@ body{
 .title{
     font-size: 64px;
 }
-.subtitle{
+.mainSubtitle{
     font-size: 48px;
 }
 
@@ -45,4 +45,8 @@ body{
 }
 .icon:hover{
     color: $text-color;
+}
+.main{
+    background-image: url(images/background.jpg);
+    height: 740px;
 }

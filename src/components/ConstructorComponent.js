@@ -1,4 +1,5 @@
 import React from 'react';
+import Dragula from 'react-dragula';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -6,10 +7,37 @@ import Container from 'react-bootstrap/Container';
 import Dishes from './DishesComponent';
 
 class Constructor extends React.Component {
-    constructor(props) {
-        super(props);
 
-        // this.handleSubmit = this.handleSubmit.bind(this);  
+    componentDidMount () {
+        let salmon = document.getElementById('salmon');
+        let sandwich = document.getElementById('sandwich');
+        let salad = document.getElementById('salad');
+        let greek_salad = document.getElementById('greek_salad');
+        let pasta = document.getElementById('pasta');
+        let herb = document.getElementById('herb');
+        let sushi = document.getElementById('sushi');
+        let egg = document.getElementById('egg');
+        let cake = document.getElementById('cake');
+        let berries = document.getElementById('berries');
+
+        let breakfast = document.getElementById('breakfast');
+        let lunch = document.getElementById('lunch');
+        let supper = document.getElementById('supper');
+
+        Dragula(
+            [salmon, sandwich, salad, greek_salad, pasta, herb, sushi, egg, cake, berries,
+            breakfast,lunch,supper], 
+            {
+                copy: true,
+                accepts: function (el, target, source, sibling) {
+                    if (target.hasChildNodes()) {
+                        return false;
+                    }else{
+                        return true;
+                    } 
+                }
+            }
+        )
     }
     render() {
         return(
@@ -32,6 +60,9 @@ class Constructor extends React.Component {
                     </div> 
                     <Dishes dishes={this.props.dishes}/>
                     {/* <Meal/> */}
+                    <div className="block" id="breakfast"></div>
+                    <div className="block" id="lunch"></div>
+                    <div className="block" id="supper"></div>
                 </div>
             </Container>
         )

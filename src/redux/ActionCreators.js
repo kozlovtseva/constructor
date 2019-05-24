@@ -1,11 +1,11 @@
-import * as ActionTypes from './ActionTypes';
+import * as ActionTypes from './constants';
 
 
 export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading(true));
 
-    return fetch('http://localhost:3001/' + 'dishes')
+    return fetch('http://localhost:3001/dishes')
         .then(response => {
             if (response.ok) {
                 return response;

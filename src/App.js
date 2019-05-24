@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/store';
+
 // fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';

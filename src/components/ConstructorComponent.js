@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
+import Dishes from './DishesComponent';
+
 class Constructor extends React.Component {
     constructor(props) {
         super(props);
@@ -28,7 +30,7 @@ class Constructor extends React.Component {
                             </Button>
                         </Form>
                     </div> 
-                    {/* <Dishes/> */}
+                    <Dishes dishes={this.props.dishes}/>
                     {/* <Meal/> */}
                 </div>
             </Container>

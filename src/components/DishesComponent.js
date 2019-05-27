@@ -10,7 +10,7 @@ function RenderDish ({dish}) {
             <img
             className="d-block w-100"
             src={"http://localhost:3001/" + dish.image}
-            alt={dish.name}
+            alt={dish.calories}
             width="155"
             height="103"
             />

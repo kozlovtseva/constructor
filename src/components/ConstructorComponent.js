@@ -1,68 +1,99 @@
 import React from 'react';
 import Dragula from 'react-dragula';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 import Dishes from './DishesComponent';
+import Meal from './MealComponent';
 
 class Constructor extends React.Component {
 
+    state = {
+        calories: null,
+        constructor: false
+    }
+
+    makeContainersArray = () => {
+        let containers = [];
+        let dishes = this.props.dishes.dishes;
+        //dishes
+        for (let i = 0; i < dishes.length; i++) {
+            let dish = document.getElementById(dishes[i].name);
+            containers.push(dish);
+        }
+        //meals
+        let meals = ['breakfast', 'lunch', 'supper'];
+        for (let i = 0; i < meals.length; i++) {
+            let meal = document.getElementById(meals[i]);
+            containers.push(meal);
+            for (let k = 2; k < 5; k++) {
+                let mealWithNumber = document.getElementById(meals[i] + String(k));
+                containers.push(mealWithNumber);
+            }
+        }
+        return containers;
+    }
+    
     componentDidMount () {
-        let salmon = document.getElementById('salmon');
-        let sandwich = document.getElementById('sandwich');
-        let salad = document.getElementById('salad');
-        let greek_salad = document.getElementById('greek_salad');
-        let pasta = document.getElementById('pasta');
-        let herb = document.getElementById('herb');
-        let sushi = document.getElementById('sushi');
-        let egg = document.getElementById('egg');
-        let cake = document.getElementById('cake');
-        let berries = document.getElementById('berries');
-
-        let breakfast = document.getElementById('breakfast');
-        let lunch = document.getElementById('lunch');
-        let supper = document.getElementById('supper');
-
+        let containers = this.makeContainersArray();
+        let that = this;
         Dragula(
-            [salmon, sandwich, salad, greek_salad, pasta, herb, sushi, egg, cake, berries,
-            breakfast,lunch,supper], 
+            containers, 
             {
                 copy: true,
-                accepts: function (el, target, source, sibling) {
+                accepts: function (el, target) {
                     if (target.hasChildNodes()) {
+                        return false;
+                    }else if(that.state.calories <= 0){
+                        alert("That's too much - you can't eat more calories today.");
                         return false;
                     }else{
                         return true;
                     } 
                 }
             }
-        )
+        ).on('drop', function(el, target) {
+            if(target !== null && target.hasChildNodes()){
+                let leftCalories = that.state.calories - el.alt;
+                that.setState({
+                    calories: leftCalories
+                });
+            } 
+        });
     }
+    handleInputChange = event => {
+        event.preventDefault();
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    handleSubmit = () => {
+        this.setState({
+            constructor: !this.state.constructor
+        });        
+    }
+
     render() {
         return(
             <Container>
                 <div className="main">
                     <div className="input">
-                        <Form>
-                            <Form.Group controlId="formCalories">
-                                <Form.Label>
-                                    <div className="subtitle">
-                                        Enter amount of calories per day
-                                    </div>
-                                </Form.Label>
-                                <Form.Control type="number" placeholder="2500" />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Construct!
-                            </Button>
-                        </Form>
-                    </div> 
-                    <Dishes dishes={this.props.dishes}/>
-                    {/* <Meal/> */}
-                    <div className="block" id="breakfast"></div>
-                    <div className="block" id="lunch"></div>
-                    <div className="block" id="supper"></div>
+                        <div className="subtitle">
+                            Enter amount of calories per day
+                        </div>
+                        <input type="number" 
+                            placeholder="2500" 
+                            onChange={this.handleInputChange}
+                            name="calories"
+                        />
+                        <Button variant="primary" onClick={this.handleSubmit}>
+                            Construct!
+                        </Button>
+                    </div>
+                    <div className={this.state.constructor ? 'constructorActive' : 'constructor'}>
+                        <Dishes dishes={this.props.dishes}/>
+                        <Meal meals={[{title: "breakfast"},{title: "lunch"},{title: "supper"}]}/>
+                    </div>
                 </div>
             </Container>
         )

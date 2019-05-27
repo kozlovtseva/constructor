@@ -2,9 +2,11 @@ import React from 'react';
 import Dragula from 'react-dragula';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 import Dishes from './DishesComponent';
 import Meal from './MealComponent';
+import { Loading } from './LoadingComponent';
 
 class Constructor extends React.Component {
 
@@ -75,6 +77,8 @@ class Constructor extends React.Component {
         }               
     }
     reTry = () => {
+        let input = document.getElementById('input');
+        input.value = null;
         let meals = ['breakfast', 'lunch', 'supper'];
         for (let i = 0; i < meals.length; i++) {
             let meal = document.getElementById(meals[i]);
@@ -89,43 +93,69 @@ class Constructor extends React.Component {
             }           
         }
         this.setState({
+            calories: null,
             constructor: !this.state.constructor
         }); 
     }
 
     render() {
-        return(
-            <Container>
-                <div className="main">
-                    <div className="input">
-                        <div className="subtitle">
-                            Enter amount of calories per day
+        if (this.props.dishes.isLoading) {
+            return(
+                <Container>
+                    <Row>            
+                        <Loading />
+                    </Row>
+                </Container>
+            );
+        }else if (this.props.dishes.errMess) {
+            return(
+                <Container>
+                    <Row> 
+                        <div className="col-12">
+                            <h4>{this.props.dishes.errMess}</h4>
                         </div>
-                        <input type="number" 
-                            placeholder="2500" 
-                            onChange={this.handleInputChange}
-                            name="calories"
-                        />
-                        <Button className={!this.state.constructor ? 'Btn' : 'displayNone'}
-                                variant="primary" 
-                                onClick={this.handleSubmit}
-                        >
-                            Construct!
-                        </Button>
-                        <Button className={this.state.constructor ? 'reTryBtn' : 'displayNone'}
-                                variant="secondary" 
-                                onClick={this.reTry}
-                        >
-                            Try again
-                        </Button>
+                    </Row>
+                </Container>
+            );
+        }else{
+            return(
+                <Container>
+                    <div className="main">
+                        <Row className={!this.state.constructor ? 'input' : 'displayNone'}>
+                            <div className="subtitle col-12 col-sm-4">
+                                Enter amount of calories per day:
+                            </div>
+                            <input type="number" 
+                                placeholder="2500" 
+                                onChange={this.handleInputChange}
+                                name="calories"
+                                className="col-12 col-sm-3"
+                                id="input"
+                            />
+                            <Button className="col-12 col-sm-2 btn"
+                                    variant="primary" 
+                                    onClick={this.handleSubmit}
+                            >
+                                Construct!
+                            </Button>                      
+                        </Row>
+                        <div className="btn-block">
+                            <Button className={this.state.constructor ? 'btn' : 'displayNone'}
+                                        variant="secondary" 
+                                        onClick={this.reTry}
+                                >
+                                    Try again
+                            </Button>
+                        </div>
+                        
+                        <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
+                            <Dishes dishes={this.props.dishes}/>
+                            <Meal meals={[{title: "breakfast"},{title: "lunch"},{title: "supper"}]}/>
+                        </div>
                     </div>
-                    <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
-                        <Dishes dishes={this.props.dishes}/>
-                        <Meal meals={[{title: "breakfast"},{title: "lunch"},{title: "supper"}]}/>
-                    </div>
-                </div>
-            </Container>
-        )
+                </Container>
+            )
+        }
     }
 }
 

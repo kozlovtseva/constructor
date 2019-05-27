@@ -68,9 +68,29 @@ class Constructor extends React.Component {
         });
     }
     handleSubmit = () => {
+        if(!this.state.constructor){
+            this.setState({
+                constructor: !this.state.constructor
+            }); 
+        }               
+    }
+    reTry = () => {
+        let meals = ['breakfast', 'lunch', 'supper'];
+        for (let i = 0; i < meals.length; i++) {
+            let meal = document.getElementById(meals[i]);
+            while (meal.firstChild) {
+                meal.removeChild(meal.firstChild);
+            }
+            for (let k = 2; k < 5; k++) {
+                let mealWithNumber = document.getElementById(meals[i] + String(k));
+                while (mealWithNumber.firstChild) {
+                    mealWithNumber.removeChild(mealWithNumber.firstChild);
+                }
+            }           
+        }
         this.setState({
             constructor: !this.state.constructor
-        });        
+        }); 
     }
 
     render() {
@@ -86,11 +106,20 @@ class Constructor extends React.Component {
                             onChange={this.handleInputChange}
                             name="calories"
                         />
-                        <Button variant="primary" onClick={this.handleSubmit}>
+                        <Button className={!this.state.constructor ? 'Btn' : 'displayNone'}
+                                variant="primary" 
+                                onClick={this.handleSubmit}
+                        >
                             Construct!
                         </Button>
+                        <Button className={this.state.constructor ? 'reTryBtn' : 'displayNone'}
+                                variant="secondary" 
+                                onClick={this.reTry}
+                        >
+                            Try again
+                        </Button>
                     </div>
-                    <div className={this.state.constructor ? 'constructorActive' : 'constructor'}>
+                    <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
                         <Dishes dishes={this.props.dishes}/>
                         <Meal meals={[{title: "breakfast"},{title: "lunch"},{title: "supper"}]}/>
                     </div>

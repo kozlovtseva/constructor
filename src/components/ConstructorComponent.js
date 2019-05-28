@@ -24,7 +24,7 @@ class Constructor extends React.Component {
             containers.push(dish);
         }
         //meals
-        let meals = ['breakfast', 'lunch', 'supper'];
+        let meals = ['Breakfast', 'Lunch', 'Supper'];
         for (let i = 0; i < meals.length; i++) {
             let meal = document.getElementById(meals[i]);
             containers.push(meal);
@@ -79,7 +79,7 @@ class Constructor extends React.Component {
     reTry = () => {
         let input = document.getElementById('input');
         input.value = null;
-        let meals = ['breakfast', 'lunch', 'supper'];
+        let meals = ['Breakfast', 'Lunch', 'Supper'];
         for (let i = 0; i < meals.length; i++) {
             let meal = document.getElementById(meals[i]);
             while (meal.firstChild) {
@@ -119,39 +119,36 @@ class Constructor extends React.Component {
             );
         }else{
             return(
-                <Container>
-                    <div className="main">
-                        <Row className={!this.state.constructor ? 'input' : 'displayNone'}>
-                            <div className="subtitle col-12 col-sm-4">
-                                Enter amount of calories per day:
-                            </div>
-                            <input type="number" 
-                                placeholder="2500" 
-                                onChange={this.handleInputChange}
-                                name="calories"
-                                className="col-12 col-sm-3"
-                                id="input"
-                            />
-                            <Button className="col-12 col-sm-2 btn"
-                                    variant="primary" 
-                                    onClick={this.handleSubmit}
+                <Container className="main">
+                    <Row className={!this.state.constructor ? 'input' : 'displayNone'}>
+                        <div className="subtitle col-12 col-sm-4">
+                            Enter amount of calories per day:
+                        </div>
+                        <input type="number" 
+                            placeholder="2500" 
+                            onChange={this.handleInputChange}
+                            name="calories"
+                            className="col-12 col-sm-3"
+                            id="input"
+                        />
+                        <Button className="col-12 col-sm-2 btn"
+                                variant="secondary" 
+                                onClick={this.handleSubmit}
+                        >
+                            Construct!
+                        </Button>                      
+                    </Row>
+                    <div className="btn-block">
+                        <Button className={this.state.constructor ? 'btn' : 'displayNone'}
+                                    variant="secondary" 
+                                    onClick={this.reTry}
                             >
-                                Construct!
-                            </Button>                      
-                        </Row>
-                        <div className="btn-block">
-                            <Button className={this.state.constructor ? 'btn' : 'displayNone'}
-                                        variant="secondary" 
-                                        onClick={this.reTry}
-                                >
-                                    Try again
-                            </Button>
-                        </div>
-                        
-                        <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
-                            <Dishes dishes={this.props.dishes}/>
-                            <Meal meals={[{title: "breakfast"},{title: "lunch"},{title: "supper"}]}/>
-                        </div>
+                                Try again
+                        </Button>
+                    </div>                  
+                    <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
+                        <Dishes dishes={this.props.dishes}/>
+                        <Meal meals={[{title: "Breakfast"},{title: "Lunch"},{title: "Supper"}]}/>
                     </div>
                 </Container>
             )

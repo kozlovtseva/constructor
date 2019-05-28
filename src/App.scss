@@ -1,10 +1,11 @@
 $background-yellow: #eff6C9;
 $background-green: #bbd3A2;
 $background-canary: #e4f48b;
-$text-color: #21501d;
+$title-color: #21501d;
+$subTitle-color: rgba(33, 80, 29, 0.7);
 
 body{
-    color: $text-color;
+    color: $title-color;
 }
 .header, .footer{
     background-color: $background-yellow;
@@ -50,18 +51,23 @@ body{
     margin-right: 5px;
 }
 .icon:hover{
-    color: $text-color;
+    color: $title-color;
 }
 .main{
     background-image: url(images/background.jpg);
-    height: 740px;
+    min-height: 340px;
 }
 .blocks{
+    margin: 20px 0;
     width: 160px;
-    height: 110px;
 }
 .block{
-    border: 2px solid green;
+    align-items: center;
+    background-color: rgba(229, 229, 229, 0.65);
+    color: $background-yellow;
+    display: flex;
+    justify-content: center;  
+    margin: 5px;
     width: 155px;
     height: 103px;
 }
@@ -81,7 +87,7 @@ body{
     background-color: $background-canary;
     box-shadow: 0 0 10px $background-canary;
     border-color: $background-canary;
-    color: $text-color;
+    color: $title-color;
     margin: 0 10px;
 }
 .btn:hover{
@@ -91,4 +97,15 @@ body{
 .btn-block{
     display: flex;
     justify-content: flex-end;
+    padding: 20px;
+}
+.constructorTitle{
+    color: $subTitle-color;
+}
+.mealsTitle{
+    color: #fff;
+    text-shadow: 1px 1px 2px $background-green;
+}
+.carousel-item:hover{
+    cursor: pointer;
 }

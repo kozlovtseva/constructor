@@ -56,33 +56,33 @@ const Dishes = (props) => {
 
     return(
         <Container>
-            <Row>
-                <Col xs={2}>
-                    <h2>Fish&Meat</h2>
+            <Row className="d-flex justify-content-center">
+                <Col xs={12} sm={6} md={4} lg={2}>
+                    <h2 className="constructorTitle">Fish&Meat</h2>
                     <Carousel interval={false} indicators={false}>
                         {FishMeat}
                     </Carousel>
                 </Col>
-                <Col xs={2}>
-                    <h2>Garnish</h2>
+                <Col xs={12} sm={6} md={4} lg={2}>
+                    <h2 className="constructorTitle">Garnish</h2>
                     <Carousel interval={false} indicators={false}>
                         {Garnish}
                     </Carousel>
                 </Col>
-                <Col xs={2}>
-                    <h2>Salads</h2>
+                <Col xs={12} sm={6} md={4} lg={2}>
+                    <h2 className="constructorTitle">Salads</h2>
                     <Carousel interval={false} indicators={false}>
                         {Salads}
                     </Carousel>
                 </Col>
-                <Col xs={2}>
-                    <h2>Snacks</h2>
+                <Col xs={12} sm={6} md={4} lg={2}>
+                    <h2 className="constructorTitle">Snacks</h2>
                     <Carousel interval={false} indicators={false}>
                         {Snacks}
                     </Carousel>
                 </Col>
-                <Col xs={2}>
-                    <h2>Desserts</h2>
+                <Col xs={12} sm={6} md={4} lg={2}>
+                    <h2 className="constructorTitle">Desserts</h2>
                     <Carousel interval={false} indicators={false}>
                         {Desserts}
                     </Carousel>

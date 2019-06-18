@@ -5,7 +5,7 @@ export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading(true));
 
-    return fetch('http://localhost:3001/dishes')
+    return fetch('http://ens-rationis.ru/dishes.json')
         .then(response => {
             if (response.ok) {
                 return response;

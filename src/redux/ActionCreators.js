@@ -5,7 +5,7 @@ export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading(true));
 
-    return fetch('http://ens-rationis.ru/dishes.json')
+    return fetch('https://api.myjson.com/bins/9y555')
         .then(response => {
             if (response.ok) {
                 return response;

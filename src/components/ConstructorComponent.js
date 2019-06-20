@@ -147,7 +147,7 @@ class Constructor extends React.Component {
                         </Button>
                     </div>                  
                     <div className={this.state.constructor ? 'constructor' : 'displayNone'}>
-                        <Dishes dishes={this.props.dishes}/>
+                        <Dishes dishes={this.props.dishes.dishes}/>
                         <Meal meals={[{title: "Breakfast"},{title: "Lunch"},{title: "Supper"}]}/>
                     </div>
                 </Container>

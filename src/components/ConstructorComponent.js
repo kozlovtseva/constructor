@@ -1,4 +1,7 @@
 import React from 'react';
+import { fetchDishes } from '../redux/ActionCreators';
+import { connect } from 'react-redux';
+
 import Dragula from 'react-dragula';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -7,6 +10,13 @@ import Row from 'react-bootstrap/Row';
 import Dishes from './DishesComponent';
 import Meal from './MealComponent';
 import { Loading } from './LoadingComponent';
+
+
+const mapStateToProps = state => {
+    return {
+      dishes: state.dishes
+    }
+}
 
 class Constructor extends React.Component {
 
@@ -17,7 +27,8 @@ class Constructor extends React.Component {
 
     makeContainersArray = () => {
         let containers = [];
-        let dishes = this.props.dishes.dishes;
+        let dishes = this.props.dishes.dishes.dishes;
+        console.log(dishes.length);
         //dishes
         for (let i = 0; i < dishes.length; i++) {
             let dish = document.getElementById(dishes[i].name);
@@ -37,32 +48,9 @@ class Constructor extends React.Component {
     }
     
     componentDidMount () {
-        let containers = this.makeContainersArray();
-        let that = this;
-        Dragula(
-            containers, 
-            {
-                copy: true,
-                accepts: function (el, target) {
-                    if (target.hasChildNodes()) {
-                        return false;
-                    }else if(that.state.calories <= 0){
-                        alert("That's too much - you can't eat more calories today.");
-                        return false;
-                    }else{
-                        return true;
-                    } 
-                }
-            }
-        ).on('drop', function(el, target) {
-            if(target !== null && target.hasChildNodes()){
-                let leftCalories = that.state.calories - el.alt;
-                that.setState({
-                    calories: leftCalories
-                });
-            } 
-        });
+        this.props.dispatch(fetchDishes());       
     }
+
     handleInputChange = event => {
         event.preventDefault();
         this.setState({
@@ -71,6 +59,31 @@ class Constructor extends React.Component {
     }
     handleSubmit = () => {
         if(!this.state.constructor){
+            let containers = this.makeContainersArray();
+            let that = this;
+            Dragula(
+                containers, 
+                {
+                    copy: true,
+                    accepts: function (el, target) {
+                        if (target.hasChildNodes()) {
+                            return false;
+                        }else if(that.state.calories <= 0){
+                            alert("That's too much - you can't eat more calories today.");
+                            return false;
+                        }else{
+                            return true;
+                        } 
+                    }
+                }
+            ).on('drop', function(el, target) {
+                if(target !== null && target.hasChildNodes()){
+                    let leftCalories = that.state.calories - el.alt;
+                    that.setState({
+                        calories: leftCalories
+                    });
+                } 
+            });
             this.setState({
                 constructor: !this.state.constructor
             }); 
@@ -99,6 +112,7 @@ class Constructor extends React.Component {
     }
 
     render() {
+        console.log(this.props.dishes);
         if (this.props.dishes.isLoading) {
             return(
                 <Container>
@@ -156,4 +170,4 @@ class Constructor extends React.Component {
     }
 }
 
-export default Constructor;  
+export default connect(mapStateToProps)(Constructor);

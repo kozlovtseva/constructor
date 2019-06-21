@@ -8,11 +8,11 @@ import Carousel from 'react-bootstrap/Carousel'
 function RenderDish ({dish}) {
     return (
             <img
-            className="d-block w-100"
-            src={dish.image}
-            alt={dish.calories}
-            width="155"
-            height="103"
+                className="d-block w-100"
+                src={dish.image}
+                alt={dish.calories}
+                width="155"
+                height="103"
             />
     );
 }

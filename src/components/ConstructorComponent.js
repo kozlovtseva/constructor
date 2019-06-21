@@ -25,6 +25,7 @@ class Constructor extends React.Component {
         constructor: false
     }
 
+    //make containers for Dragula library
     makeContainersArray = () => {
         let containers = [];
         let dishes = this.props.dishes.dishes.dishes;
@@ -47,6 +48,7 @@ class Constructor extends React.Component {
         return containers;
     }
     
+    //get data (list of dishes)
     componentDidMount () {
         this.props.dispatch(fetchDishes());       
     }
@@ -65,8 +67,9 @@ class Constructor extends React.Component {
                 containers, 
                 {
                     copy: true,
+                    //handling event when user wants to drop a dish
                     accepts: function (el, target) {
-                        if (target.hasChildNodes()) {
+                        if (target.hasChildNodes()) { //if a container is not empty
                             return false;
                         }else if(that.state.calories <= 0){
                             alert("That's too much - you can't eat more calories today.");
@@ -77,6 +80,7 @@ class Constructor extends React.Component {
                     }
                 }
             ).on('drop', function(el, target) {
+                //handling event after user has "droped" a dish
                 if(target !== null && target.hasChildNodes()){
                     let leftCalories = that.state.calories - el.alt;
                     that.setState({
@@ -84,12 +88,14 @@ class Constructor extends React.Component {
                     });
                 } 
             });
+            //showing constructing field
             this.setState({
                 constructor: !this.state.constructor
             }); 
         }               
     }
     reTry = () => {
+        //refreshing actions
         let input = document.getElementById('input');
         input.value = null;
         let meals = ['Breakfast', 'Lunch', 'Supper'];
@@ -112,7 +118,6 @@ class Constructor extends React.Component {
     }
 
     render() {
-        console.log(this.props.dishes);
         if (this.props.dishes.isLoading) {
             return(
                 <Container>

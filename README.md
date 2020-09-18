@@ -1,4 +1,4 @@
-## Учебный проект на React
+## Учебный проект для курса Full-Stack Web Development with React(Bootstrap, React, ReactNative, NodeJS, Express, MongoDB)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
